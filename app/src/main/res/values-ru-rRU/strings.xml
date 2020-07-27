@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">A1L1_HomeWork</string>
+    <string name="Location">Куда вас занесло?</string>
+    <string name="ButtonGetWeather">Получить прогноз</string>
+    <string name="ResOfWeather">Погода прекрасная!</string>
+</resources>
