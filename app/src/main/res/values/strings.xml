@@ -3,4 +3,8 @@
     <string name="Location">Input your location</string>
     <string name="ButtonGetWeather">Get weather</string>
     <string name="ResOfWeather">Weather is GOOD!</string>
+    <string name="HintSelectSity">Select Your sity</string>
+    <string name="WindSpeed">Show wind speed</string>
+    <string name="Pressure">Show pressure</string>
+    <string name="ButtonOk">Ok</string>
 </resources>

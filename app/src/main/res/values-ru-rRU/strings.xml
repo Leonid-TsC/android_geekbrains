@@ -4,4 +4,8 @@
     <string name="Location">Куда вас занесло?</string>
     <string name="ButtonGetWeather">Получить прогноз</string>
     <string name="ResOfWeather">Погода прекрасная!!!</string>
+    <string name="HintSelectSity">Выберите Ваш город</string>
+    <string name="WindSpeed">Показывать скорость ветра</string>
+    <string name="Pressure">Показывать давление</string>
+    <string name="ButtonOk">Ок</string>
 </resources>
