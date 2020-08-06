@@ -8,4 +8,14 @@
     <string name="WindSpeed">Показывать скорость ветра</string>
     <string name="Pressure">Показывать давление</string>
     <string name="ButtonOk">Ок</string>
+    <string name="event_toast_onstart">on start</string>
+    <string name="event_toast_oncreate">on create</string>
+    <string name="event_toast_onrestart">on restart</string>
+    <string name="event_toast_onresume">on resume</string>
+    <string name="event_toast_onpause">on pause</string>
+    <string name="event_toast_onstop">on stope</string>
+    <string name="event_toast_ondestroy">on destroy</string>
+    <string name="event_tag">Neme of event</string>
+    <string name="event_toast_onSaveInstanceState">onSaveInstanceState</string>
+    <string name="event_toast_onRestoreInstanceState">event_toast_onRestoreInstanceState</string>
 </resources>
