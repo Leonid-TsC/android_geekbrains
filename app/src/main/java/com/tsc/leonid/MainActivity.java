@@ -1,8 +1,11 @@
 package com.tsc.leonid.android_geekbrains;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -12,12 +15,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tsc.leonid.android_geekbrains.SelectSity;
+
+
 public class MainActivity extends AppCompatActivity {
-    private Button buttonGW;
+    private Button buttonGetWeight, buttonSelectSity, buttonOpenWiki;
     private TextView textRes;
-    private EditText textLoc;
     private final String eventTag = String.valueOf(R.string.event_toast_oncreate);
     private final String weatherDataKey = "weatherDataKey";
+
+    private final int requestCodeSettings = 32167;
+    final static String sityDataKey = "sityDataKey";
+    final static String windSpeedDataKey = "windSpeedDataKey";
+    final static String pressureDataKey = "pressureDataKey";
+    private String sityOfUser;
+    private boolean windSpeed, pressure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +37,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initViews();
-        setOnButtonGWClickBehaviour();
+        setOnbuttonGetWeightClickBehaviour();
+        setOnbuttonSelectSityClickBehaviour();
+        setOnbuttonOpenWikiClickBehaviour();
 
         Toast.makeText(getApplicationContext(), R.string.event_toast_oncreate, Toast.LENGTH_SHORT).show();
         String str = String.valueOf(R.string.event_toast_oncreate);
@@ -34,19 +48,62 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews(){
-        buttonGW = findViewById(R.id.button);
+        buttonGetWeight = findViewById(R.id.buttonGW);
+        buttonSelectSity = findViewById(R.id.btnSelectSity);
+        buttonOpenWiki = findViewById(R.id.btnOpewWiki);
         textRes = findViewById(R.id.textView);
-        textLoc = findViewById(R.id.editTextLocation);
     }
 
-    private void setOnButtonGWClickBehaviour(){
-        buttonGW.setOnClickListener(new View.OnClickListener(){
+    private void setOnbuttonGetWeightClickBehaviour(){
+        buttonGetWeight.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                String res = getString(R.string.ResOfWeather);
-                textRes.setText(res);
+                String text1 = getString(R.string.ResOfWeather);
+                String text2 = getString(R.string.ResOfWeather2);
+                String res = textRes.getText().toString();
+                if (res.equals(text1)) textRes.setText(text2);
+                else textRes.setText(text1);
             }
         });
+    }
+
+    private void setOnbuttonSelectSityClickBehaviour(){
+        buttonSelectSity.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(MainActivity.this, SelectSity.class);
+                intent.putExtra(sityDataKey, sityOfUser);
+                intent.putExtra(windSpeedDataKey, windSpeed);
+                intent.putExtra(pressureDataKey, pressure);
+
+                startActivityForResult(intent, requestCodeSettings);
+            }
+        });
+    }
+
+    private void setOnbuttonOpenWikiClickBehaviour(){
+        buttonOpenWiki.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String wikilink = getString(R.string.wiki_link);
+                wikilink += sityOfUser;
+
+                Uri uri = Uri.parse(wikilink);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == this.requestCodeSettings && resultCode == RESULT_OK && data != null){
+            sityOfUser = data.getStringExtra(SelectSity.sityDataKey);
+            windSpeed = data.getBooleanExtra(SelectSity.windSpeedDataKey, false);
+            pressure = data.getBooleanExtra(SelectSity.pressureDataKey, false);
+        }
     }
 
     @Override
