@@ -1,6 +1,24 @@
 <resources>
     <string name="app_name" translatable="false">A1L1_HomeWork</string>
+    <string name="wiki_link" translatable="false">https://ru.wikipedia.org/wiki/</string>
     <string name="Location">Input your location</string>
     <string name="ButtonGetWeather">Get weather</string>
     <string name="ResOfWeather">Weather is GOOD!</string>
+    <string name="HintSelectSity">Select Your sity</string>
+    <string name="WindSpeed">Show wind speed</string>
+    <string name="Pressure">Show pressure</string>
+    <string name="ButtonOk">Ok</string>
+    <string name="event_toast_onstart">on start</string>
+    <string name="event_toast_oncreate">on create</string>
+    <string name="event_toast_onrestart">on restart</string>
+    <string name="event_toast_onresume">on resume</string>
+    <string name="event_toast_onpause">on pause</string>
+    <string name="event_toast_onstop">on stope</string>
+    <string name="event_toast_ondestroy">on destroy</string>
+    <string name="event_tag">Neme of event</string>
+    <string name="event_toast_onSaveInstanceState">onSaveInstanceState</string>
+    <string name="event_toast_onRestoreInstanceState">event_toast_onRestoreInstanceState</string>
+    <string name="ResOfWeather2">Погода так себе!</string>
+    <string name="btnSelectSity">Select sity</string>
+    <string name="btnWiki">Open sity in Wiki</string>
 </resources>
